@@ -133,10 +133,16 @@
             >{{blog.content}}</textarea>
           </div>
 
-          <img src={{blog.image}} alt='' />
-
           <div class='mb-3'>
             <label for='formFile' class='form-label'>Upload Image</label>
+            <div>
+              <img
+                src={{blog.image}}
+                alt='image'
+                style='width: 250px;'
+                class='rounded'
+              />
+            </div>
             <input
               name='image'
               class='form-control'
