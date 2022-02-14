@@ -200,7 +200,7 @@ app.get('/detail-blog/:id', function (req, res) {
   });
 });
 
-app.post('/update-project', upload.single('image'), function (req, res) {
+app.post('/update-blog', upload.single('image'), function (req, res) {
   // Route for post blog
   let data = req.body;
   let query;
