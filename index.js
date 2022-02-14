@@ -163,6 +163,14 @@ app.get('/update-blog/:id', function (req, res) {
       if (err) throw err;
       let data = result.rows[0];
 
+      data = {
+        ...data,
+        image:
+          data.image == 'null'
+            ? '/public/assets/my-img.png'
+            : '/uploads/' + data.image,
+      };
+
       console.log(data);
 
       res.render('update-blog', {
