@@ -13,10 +13,10 @@ if (isProduction) {
 } else {
 
     pool = new Pool({
-        database: 'db_blog',
-        port: 5432,
-        user: 'postgres',
-        password: 'root'
+        database: process.env.PG_DATABASE,
+        port: process.env.PG_PORT,
+        user: process.env.PG_USER,
+        password: process.env.PG_PASSWORD
     })
 
 }
