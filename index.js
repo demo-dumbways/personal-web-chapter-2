@@ -133,31 +133,6 @@ app.post('/blog', upload.single('image'), function (req, res) {
   });
 });
 
-app.update('/blog', upload.single('image'), function (req, res) {
-  // Route for post blog
-  let data = req.body;
-
-  if (!req.session.isLogin) {
-    req.flash('danger', 'Please login');
-    return res.redirect('/add-blog');
-  }
-
-  let authorId = req.session.user.id;
-  let image = req.file ? req.file.filename : null;
-
-  let query = `INSERT INTO blog(title, content, image, author_id) VALUES ('${data.title}', '${data.content}', '${image}', '${authorId}')`;
-
-  db.connect(function (err, client, done) {
-    if (err) throw err;
-
-    client.query(query, function (err, result) {
-      done();
-      if (err) throw err;
-      res.redirect('/blog');
-    });
-  });
-});
-
 app.get('/delete-blog/:id', function (req, res) {
   let id = req.params.id;
   let query = `DELETE FROM blog WHERE id = ${id}`;
